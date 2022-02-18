@@ -1,21 +1,40 @@
-//
-//  ContentView.swift
-//  SwiftUI_Searchbar
-//
-//  Created by Sebastian Klösel on 18.02.22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    
+    var data: Data
+    
+    @State private var searchText = ""
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+            List {
+                ForEach(test) { library in
+                    Model(data: library)
+                }
+            }
+            .searchable(text: $searchText)
+            .navigationTitle(Text("Searchbar"))
+        }
+    }
+    var test: [Data] {
+        if searchText.isEmpty {
+            return dataLibrary
+        } else {
+            return dataLibrary.filter { ($0.title.lowercased().contains(searchText.lowercased()))}
+            // lowercased ist for Search, small words
+        }
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(data: dataLibrary[1])
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+
+
+
+
+

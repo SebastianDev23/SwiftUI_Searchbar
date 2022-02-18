@@ -1,9 +1,4 @@
-//
-//  SwiftUI_SearchbarApp.swift
-//  SwiftUI_Searchbar
-//
-//  Created by Sebastian Klösel on 18.02.22.
-//
+
 
 import SwiftUI
 
@@ -11,7 +6,7 @@ import SwiftUI
 struct SwiftUI_SearchbarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(data: Data(title: "", description: ""))
         }
     }
 }
