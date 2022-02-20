@@ -23,7 +23,7 @@ struct ContentView: View {
             return dataLibrary
         } else {
             return dataLibrary.filter { ($0.title.lowercased().contains(searchText.lowercased()))}
-            // lowercased ist for Search, small words
+            // lowercased is for Search, small words
         }
     }
 }
